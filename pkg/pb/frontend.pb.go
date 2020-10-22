@@ -533,8 +533,11 @@ type FrontendServiceClient interface {
 	// If SearchFields exist in a Ticket, CreateBackfillRequest will also index these fields such that one can query the ticket with query.QueryBakfillTickets function.
 	CreateBackfill(ctx context.Context, in *CreateBackfillRequest, opts ...grpc.CallOption) (*Backfill, error)
 	// Side effects: Any tickets waiting for this backfill will be returned to the active pool, no longer pending.
+	// TODO: delete or replace this comment.
 	DeleteBackfill(ctx context.Context, in *DeleteBackfillRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	GetBackfill(ctx context.Context, in *GetBackfillRequest, opts ...grpc.CallOption) (*Backfill, error)
+	// Side effects: Any tickets waiting for this backfill will be returned to the active pool, no longer pending.
+	// TODO: delete or replace this comment.
 	UpdateBackfill(ctx context.Context, in *UpdateBackfillRequest, opts ...grpc.CallOption) (*Backfill, error)
 }
 
@@ -669,8 +672,11 @@ type FrontendServiceServer interface {
 	// If SearchFields exist in a Ticket, CreateBackfillRequest will also index these fields such that one can query the ticket with query.QueryBakfillTickets function.
 	CreateBackfill(context.Context, *CreateBackfillRequest) (*Backfill, error)
 	// Side effects: Any tickets waiting for this backfill will be returned to the active pool, no longer pending.
+	// TODO: delete or replace this comment.
 	DeleteBackfill(context.Context, *DeleteBackfillRequest) (*empty.Empty, error)
 	GetBackfill(context.Context, *GetBackfillRequest) (*Backfill, error)
+	// Side effects: Any tickets waiting for this backfill will be returned to the active pool, no longer pending.
+	// TODO: delete or replace this comment.
 	UpdateBackfill(context.Context, *UpdateBackfillRequest) (*Backfill, error)
 }
 

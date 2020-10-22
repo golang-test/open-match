@@ -158,6 +158,7 @@ service FrontendService {
   }
 
   // Side effects: Any tickets waiting for this backfill will be returned to the active pool, no longer pending.
+  // TODO: delete or replace this comment.
   rpc DeleteBackfill(DeleteBackfillRequest) returns (google.protobuf.Empty) {
     option (google.api.http) = {
       delete: "/v1/frontendservice/backfills/{backfill_id}"
@@ -170,6 +171,8 @@ service FrontendService {
     };
   }
 
+  // Side effects: Any tickets waiting for this backfill will be returned to the active pool, no longer pending.
+  // TODO: delete or replace this comment.
   rpc UpdateBackfill(UpdateBackfillRequest) returns (Backfill) {
     option (google.api.http) = {
       patch: "/v1/frontendservice/backfills"

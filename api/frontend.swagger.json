@@ -58,6 +58,7 @@
         ]
       },
       "patch": {
+        "summary": "Side effects: Any tickets waiting for this backfill will be returned to the active pool, no longer pending.\nTODO: delete or replace this comment.",
         "operationId": "UpdateBackfill",
         "responses": {
           "200": {
@@ -120,7 +121,7 @@
         ]
       },
       "delete": {
-        "summary": "Side effects: Any tickets waiting for this backfill will be returned to the active pool, no longer pending.",
+        "summary": "Side effects: Any tickets waiting for this backfill will be returned to the active pool, no longer pending.\nTODO: delete or replace this comment.",
         "operationId": "DeleteBackfill",
         "responses": {
           "200": {
