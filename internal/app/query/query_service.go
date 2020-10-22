@@ -19,10 +19,9 @@ import (
 	"sync"
 	"time"
 
-	"go.opencensus.io/stats"
-
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
+	"go.opencensus.io/stats"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"open-match.dev/open-match/internal/appmain"

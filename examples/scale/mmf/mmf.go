@@ -15,17 +15,13 @@
 package mmf
 
 import (
-	"fmt"
 	"net"
 
 	"github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
-
-	"open-match.dev/open-match/pkg/pb"
-
-	utilTesting "open-match.dev/open-match/internal/util/testing"
-
 	"open-match.dev/open-match/examples/scale/scenarios"
+	utilTesting "open-match.dev/open-match/internal/util/testing"
+	"open-match.dev/open-match/pkg/pb"
 )
 
 var (
@@ -37,8 +33,7 @@ var (
 
 // Run triggers execution of a MMF.
 func Run() {
-	activeScenario := scenarios.ActiveScenario
-
+	const port = "50502"
 	conn, err := grpc.Dial("open-match-query.open-match.svc.cluster.local:50503", utilTesting.NewGRPCDialOptions(logger)...)
 	if err != nil {
 		logger.Fatalf("Failed to connect to Open Match, got %v", err)
@@ -46,17 +41,17 @@ func Run() {
 	defer conn.Close()
 
 	server := grpc.NewServer(utilTesting.NewGRPCServerOptions(logger)...)
-	pb.RegisterMatchFunctionServer(server, activeScenario.MMF)
-	ln, err := net.Listen("tcp", fmt.Sprintf(":%d", 50502))
+	pb.RegisterMatchFunctionServer(server, scenarios.ActiveScenario.MMF)
+	ln, err := net.Listen("tcp", ":"+port)
 	if err != nil {
 		logger.WithFields(logrus.Fields{
 			"error": err.Error(),
-			"port":  50502,
+			"port":  port,
 		}).Fatal("net.Listen() error")
 	}
 
 	logger.WithFields(logrus.Fields{
-		"port": 50502,
+		"port": port,
 	}).Info("TCP net listener initialized")
 
 	logger.Info("Serving gRPC endpoint")
