@@ -134,8 +134,7 @@ service FrontendService {
 
   // WatchAssignments stream back Assignment of the specified TicketId if it is updated.
   //   - If the Assignment is not updated, GetAssignment will retry using the configured backoff strategy. 
-  rpc WatchAssignments(WatchAssignmentsRequest)
-      returns (stream WatchAssignmentsResponse) {
+  rpc WatchAssignments(WatchAssignmentsRequest) returns (stream WatchAssignmentsResponse) {
     option (google.api.http) = {
       get: "/v1/frontendservice/tickets/{ticket_id}/assignments"
     };
