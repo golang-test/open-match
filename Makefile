@@ -472,8 +472,10 @@ set-redis-password:
 		stty echo; \
 		printf "\n"; \
 		$(KUBECTL) create secret generic open-match-redis -n $(OPEN_MATCH_KUBERNETES_NAMESPACE) --from-literal=redis-password=$$REDIS_PASSWORD --dry-run -o yaml | $(KUBECTL) replace -f - --force
-## ####################################
-## # Tool installation helpers
+
+## ==========================
+## Tool installation helpers
+## ==========================
 ##
 
 ## # Install toolchain. Short for installing K8s, protoc and OpenMatch tools.
@@ -654,8 +656,9 @@ delete-mini-cluster: build/toolchain/bin/minikube$(EXE_EXTENSION)
 gcp-apply-binauthz-policy: build/policies/binauthz.yaml
 	$(GCLOUD) beta $(GCP_PROJECT_FLAG) container binauthz policy import build/policies/binauthz.yaml
 
-## ##############################
-## # Protobuf
+## =========
+## Protobuf
+## =========
 ##
 
 ## # Build all protobuf definitions.
